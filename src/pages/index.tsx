@@ -1,12 +1,14 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import Layout from "../components/Layout"
-import WorldMap from "../components/WorldMap"
+import Layout from "../components/Layouts/Layout"
+import WorldMap from "../components/Layouts/WorldMap"
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-        <WorldMap />
+        <div className="flex flex-col items-center justify-center h-full"> 
+          <WorldMap />
+        </div>
     </Layout>
   )
 }

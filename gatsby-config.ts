@@ -23,7 +23,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        icon: "src/images/64px-Mongolia_Passport_2023.png",
       },
     },
     "gatsby-plugin-sharp",
