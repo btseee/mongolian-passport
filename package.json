@@ -1,5 +1,16 @@
 {
   "name": "mongolian-passport",
+  "displayName": "Mongolian Passport",
+  "description": "Fun statistics and information about Mongolian passport",
+  "author": {
+    "name": "Tsee",
+    "email": "bbattseren88@gmail.com",
+    "url": "https://btseee.github.io/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btseee/mongolian-passport"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +22,8 @@
   "dependencies": {
     "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-svg-worldmap": "^2.0.0-alpha.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -20,7 +32,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
-    "gh-pages": "^6.3.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

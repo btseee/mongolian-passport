@@ -1,0 +1,79 @@
+[
+  {
+    "number": 68,
+    "country_name_mn": "АНУ",
+    "country_name_en": "USA",
+    "country_code": "US",
+    "visa_free_duration": "3-10 жилийн хугацаанд олон удаа зорчих виз",
+    "effective_date": "2001.07.06",
+    "passport_type": "Монгол Улсын иргэдэд"
+  },
+  {
+    "number": 69,
+    "country_name_mn": "ИБУИНВУ",
+    "country_name_en": "UK",
+    "country_code": "GB",
+    "visa_free_duration": "1 удаа 6 сар хүртэл хугацаагаар суурьших эрхтэй, 6 сараас 10 жилийн хугацаатай олон удаа зорчих виз",
+    "effective_date": "2009.06.29",
+    "passport_type": "Монгол Улсын иргэдэд",
+    "notes": "Их Британийн Дипломат паспорт эзэмшигч иргэд Монгол Улсад 30 хүртэл хоногийн хугацаанд визгүй зорчихоор харилцан тохиролцсон"
+  },
+  {
+    "number": 70,
+    "country_name_mn": "Канад",
+    "country_name_en": "Canada",
+    "country_code": "CA",
+    "visa_free_duration": "10 жил хүртэлх, дипломат болон албан паспорттай иргэдэд 4 жил хүртэлх хугацааны олон удаагийн виз",
+    "effective_date": "2013.06.04",
+    "passport_type": "Монгол Улсын энгийн паспорттай иргэдэд"
+  },
+  {
+    "number": 71,
+    "country_name_mn": "Япон",
+    "country_name_en": "Japan",
+    "country_code": "JP",
+    "visa_free_duration": "3 хүртэлх жилийн хугацаатай /нэг удаа 15 хүртэлх хоног/",
+    "effective_date": "2015.08.10",
+    "passport_type": "Монгол Улсын иргэдэд",
+    "notes": "Япон Улсын Засгийн газраас Монгол Улсын иргэдэд 3 хүртэлх жилийн хугацаатай /нэг удаа 15 хүртэлх хоног/ 'Богино хугацааны олон удаагийн виз' олгох шийдвэр гаргасан"
+  },
+  {
+    "number": 72,
+    "country_name_mn": "Швейцарь",
+    "country_name_en": "Switzerland",
+    "country_code": "CH",
+    "visa_free_duration": "3-5 жилийн хугацаатай олон удаа зорчих виз",
+    "effective_date": "2018.06.16",
+    "passport_type": "Монгол Улсын энгийн паспорттай иргэдэд"
+  },
+  {
+    "number": 73,
+    "country_name_mn": "Египет",
+    "country_name_en": "Egypt",
+    "country_code": "EG",
+    "visa_free_duration": "Хилийн боомт дээр виз олгоно",
+    "effective_date": "2023.10.30",
+    "passport_type": "Монгол Улсын иргэдэд",
+    "notes": "виз мэдүүлэхэд паспорт, 2 хувь цээж зураг, визийн төлбөр бэлнээр, иргэний үнэмлэх, виз мэдүүлгийн маягт бөглөх шаардлагатай"
+  },
+  {
+    "number": 74,
+    "country_name_mn": "Индонез",
+    "country_name_en": "Indonesia",
+    "country_code": "ID",
+    "visa_free_duration": "Хилийн боомт дээр виз олгоно",
+    "effective_date": "2024.01.09",
+    "passport_type": "Монгол Улсын иргэдэд",
+    "notes": "виз мэдүүлэхэд паспорт, буцах нислэгийн тийз, цахим гаалийн мэдүүлэг https://ecd.beacukai.go.id -ийг бөглөх шаардлагатай"
+  },
+  {
+    "number": 75,
+    "country_name_mn": "Кени",
+    "country_name_en": "Kenya",
+    "country_code": "KE",
+    "visa_free_duration": "Виз мэдүүлэх шаардлагагүй ба цахим аялалын зөвшөөрөл /еTA/ авна",
+    "effective_date": "2024.01.01",
+    "passport_type": "Монгол Улсын иргэдэд",
+    "notes": "еTA-г www.etakenya.go.ke хуудсаар орж, аялахаас 14 хоногийн өмнө мэдүүлэх шаардлагатай"
+  }
+]
