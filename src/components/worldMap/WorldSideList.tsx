@@ -22,7 +22,7 @@ export default function WorldSideList({ selectedCountry }: WorldSideListProps) {
     <aside className="w-full h-full p-4">
       <ul className="divide-y divide-gray-200 dark:divide-gray-700 h-[50vh] overflow-y-auto overflow-x-hidden">
         {passportData.map((item) => (
-          <li key={item.number} className="py-3 sm:py-4" ref={(el) => el && countryRefs.current.set(item.country_code, el)}>
+          <li key={item.number} className="py-3 sm:py-4" ref={(el) => { if (el) countryRefs.current.set(item.country_code, el); }}>
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
               <div className="shrink-0">
                 <Image
