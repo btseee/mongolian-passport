@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    basePath: "/mongolian-passport",
+    distDir: "docs",
     output: "export",
     images:{
         domains: ['flagcdn.com']
