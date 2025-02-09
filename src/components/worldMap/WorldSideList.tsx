@@ -1,13 +1,20 @@
 import Image from "next/image";
 import passportData from "@/data/passport.json";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface WorldSideListProps {
   selectedCountry: string | null;
+  onCountryClick: (countryName: string) => void;
 }
 
-export default function WorldSideList({ selectedCountry }: WorldSideListProps) {
+export default function WorldSideList({ selectedCountry, onCountryClick }: WorldSideListProps) {
   const countryRefs = useRef<Map<string, HTMLLIElement>>(new Map());
+  const [filter, setFilter] = useState("");
+
+  const filteredData = passportData.filter((item) =>
+    item.country_name_en.toLowerCase().includes(filter.toLowerCase()) ||
+    item.country_name_mn.toLowerCase().includes(filter.toLowerCase())
+  );
 
   useEffect(() => {
     if (selectedCountry && countryRefs.current.has(selectedCountry)) {
@@ -20,14 +27,37 @@ export default function WorldSideList({ selectedCountry }: WorldSideListProps) {
 
   return (
     <aside className="w-full h-full p-4">
+      {/* Filter Input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Хайлт..."
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+        />
+      </div>
+
+      {/* Country List */}
       <ul className="divide-y divide-gray-200 dark:divide-gray-700 h-[50vh] overflow-y-auto overflow-x-hidden">
-        {passportData.map((item) => (
-          <li key={item.number} className="py-3 sm:py-4" ref={(el) => { if (el) countryRefs.current.set(item.country_code, el); }}>
+        {filteredData.map((item) => (
+          <li
+            key={item.number}
+            className={`py-3 px-6 sm:py-4 cursor-pointer ${
+              selectedCountry === item.country_name_en
+                ? "bg-gray-100 dark:bg-gray-800"
+                : "hover:bg-gray-50 dark:hover:bg-gray-700"
+            }`}
+            ref={(el) => {
+              if (el) countryRefs.current.set(item.country_name_en, el);
+            }}
+            onClick={() => onCountryClick(item.country_name_en)} // Trigger tooltip on click
+          >
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
               <div className="shrink-0">
                 <Image
-                  className="w-8 h-8 rounded-full"
-                  src={`https://flagcdn.com/40x30/${item.country_code.toLowerCase()}.png`}
+                  className="w-8 h-8 rounded"
+                  src={`https://flagcdn.com/${item.country_code.toLowerCase()}.svg`}
                   alt="Country Passport"
                   width={32}
                   height={32}
@@ -47,10 +77,13 @@ export default function WorldSideList({ selectedCountry }: WorldSideListProps) {
                     {item.visa_free_duration} хоног
                   </p>
                   <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                    {item.effective_date}
+                    {item.passport_type}
                   </p>
                 </div>
               </div>
+            </div>
+            <div className="mt-3">
+              <p className="text-sm text-right text-pretty text-gray-500 dark:text-gray-400">{item.notes}</p>
             </div>
           </li>
         ))}

@@ -1,0 +1,336 @@
+[
+  {
+    "number": 31,
+    "country_name_mn": "Румын",
+    "country_name_en": "Romania",
+    "country_code": "RO",
+    "visa_free_duration": 30,
+    "effective_date": "1974.10.14",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 32,
+    "country_name_mn": "БНАСАУ",
+    "country_name_en": "North Korea",
+    "country_code": "KP",
+    "visa_free_duration": 90,
+    "effective_date": "1986.11.14",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 33,
+    "country_name_mn": "Словак",
+    "country_name_en": "Slovakia",
+    "country_code": "SK",
+    "visa_free_duration": 90,
+    "effective_date": "1992.06.26",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 34,
+    "country_name_mn": "Чех",
+    "country_name_en": "Czech Republic",
+    "country_code": "CZ",
+    "visa_free_duration": 90,
+    "effective_date": "1992.06.26, 2011.07.29, 2023.11.22",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 35,
+    "country_name_mn": "Вьетнам",
+    "country_name_en": "Vietnam",
+    "country_code": "VN",
+    "visa_free_duration": 90,
+    "effective_date": "2024.03.07",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 36,
+    "country_name_mn": "Мексик",
+    "country_name_en": "Mexico",
+    "country_code": "MX",
+    "visa_free_duration": 90,
+    "effective_date": "2001.11.09",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 37,
+    "country_name_mn": "Энэтхэг",
+    "country_name_en": "India",
+    "country_code": "IN",
+    "visa_free_duration": 90,
+    "effective_date": "2005.12.23",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 38,
+    "country_name_mn": "Болгар",
+    "country_name_en": "Bulgaria",
+    "country_code": "BG",
+    "visa_free_duration": 90,
+    "effective_date": "2011.01.18",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 39,
+    "country_name_mn": "Кипр",
+    "country_name_en": "Cyprus",
+    "country_code": "CY",
+    "visa_free_duration": 90,
+    "effective_date": "2011.03.30",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 40,
+    "country_name_mn": "Польш",
+    "country_name_en": "Poland",
+    "country_code": "PL",
+    "visa_free_duration": 90,
+    "effective_date": "2011.06.29",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 41,
+    "country_name_mn": "БНСУ",
+    "country_name_en": "South Korea",
+    "country_code": "KR",
+    "visa_free_duration": 90,
+    "effective_date": "2012.05.31",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 42,
+    "country_name_mn": "Камбож",
+    "country_name_en": "Cambodia",
+    "country_code": "KH",
+    "visa_free_duration": 30,
+    "effective_date": "2012.08.27",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 43,
+    "country_name_mn": "Кувейт",
+    "country_name_en": "Kuwait",
+    "country_code": "KW",
+    "visa_free_duration": 90,
+    "effective_date": "2013.04.16",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 44,
+    "country_name_mn": "Перу",
+    "country_name_en": "Peru",
+    "country_code": "PE",
+    "visa_free_duration": 90,
+    "effective_date": "2013.04.30",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 45,
+    "country_name_mn": "ХБНГУ",
+    "country_name_en": "Germany",
+    "country_code": "DE",
+    "visa_free_duration": 90,
+    "effective_date": "2013.05.08",
+    "passport_type": "Зөвхөн Цахим дипломат паспорт"
+  },
+  {
+    "number": 46,
+    "country_name_mn": "Бруней",
+    "country_name_en": "Brunei",
+    "country_code": "BN",
+    "visa_free_duration": 14,
+    "effective_date": "2013.07.01",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 47,
+    "country_name_mn": "Колумб",
+    "country_name_en": "Colombia",
+    "country_code": "CO",
+    "visa_free_duration": 30,
+    "effective_date": "2013.09.23",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 48,
+    "country_name_mn": "Франц",
+    "country_name_en": "France",
+    "country_code": "FR",
+    "visa_free_duration": 90,
+    "effective_date": "2013.10.26",
+    "passport_type": "Дипломат паспорт"
+  },
+  {
+    "number": 49,
+    "country_name_mn": "Мьянмар",
+    "country_name_en": "Myanmar",
+    "country_code": "MM",
+    "visa_free_duration": 30,
+    "effective_date": "2013.11.18",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 50,
+    "country_name_mn": "Эстони",
+    "country_name_en": "Estonia",
+    "country_code": "EE",
+    "visa_free_duration": 90,
+    "effective_date": "2014.04.28",
+    "passport_type": "Зөвхөн Цахим дипломат паспорт"
+  },
+  {
+    "number": 51,
+    "country_name_mn": "Латви",
+    "country_name_en": "Latvia",
+    "country_code": "LV",
+    "visa_free_duration": 90,
+    "effective_date": "2014.06.12",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 52,
+    "country_name_mn": "Итали",
+    "country_name_en": "Italy",
+    "country_code": "IT",
+    "visa_free_duration": 90,
+    "effective_date": "2014.07.14",
+    "passport_type": "Дипломат паспорт"
+  },
+  {
+    "number": 53,
+    "country_name_mn": "Туркменистан",
+    "country_name_en": "Turkmenistan",
+    "country_code": "TM",
+    "visa_free_duration": 30,
+    "effective_date": "2015.06.03",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 54,
+    "country_name_mn": "Унгар",
+    "country_name_en": "Hungary",
+    "country_code": "HU",
+    "visa_free_duration": 90,
+    "effective_date": "2016.05.18",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 55,
+    "country_name_mn": "Япон",
+    "country_name_en": "Japan",
+    "country_code": "JP",
+    "visa_free_duration": 30,
+    "effective_date": "2016.11.15",
+    "passport_type": "Дипломат паспорт"
+  },
+  {
+    "number": 56,
+    "country_name_mn": "Балба",
+    "country_name_en": "Nepal",
+    "country_code": "NP",
+    "visa_free_duration": 90,
+    "effective_date": "2016.12.1, 2017.01.18",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 57,
+    "country_name_mn": "Албани",
+    "country_name_en": "Albania",
+    "country_code": "AL",
+    "visa_free_duration": 90,
+    "effective_date": "2017.03.30",
+    "passport_type": "Цахим дипломат, цахим албан паспорт"
+  },
+  {
+    "number": 58,
+    "country_name_mn": "Хорват",
+    "country_name_en": "Croatia",
+    "country_code": "HR",
+    "visa_free_duration": 30,
+    "effective_date": "2017.04.26",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 59,
+    "country_name_mn": "Мальта",
+    "country_name_en": "Malta",
+    "country_code": "MT",
+    "visa_free_duration": 30,
+    "effective_date": "2018.02.08",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 60,
+    "country_name_mn": "Литва",
+    "country_name_en": "Lithuania",
+    "country_code": "LT",
+    "visa_free_duration": 30,
+    "effective_date": "2018.04.29",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 61,
+    "country_name_mn": "Швейцарь",
+    "country_name_en": "Switzerland",
+    "country_code": "CH",
+    "visa_free_duration": 90,
+    "effective_date": "2018.06.16",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 62,
+    "country_name_mn": "Азербайжан",
+    "country_name_en": "Azerbaijan",
+    "country_code": "AZ",
+    "visa_free_duration": 90,
+    "effective_date": "2019.02.07",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 63,
+    "country_name_mn": "Армян",
+    "country_name_en": "Armenia",
+    "country_code": "AM",
+    "visa_free_duration": 30,
+    "effective_date": "2019.06.02",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 64,
+    "country_name_mn": "Грек",
+    "country_name_en": "Greece",
+    "country_code": "GR",
+    "visa_free_duration": 90,
+    "effective_date": "2020.05.10",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 65,
+    "country_name_mn": "Словени",
+    "country_name_en": "Slovenia",
+    "country_code": "SI",
+    "visa_free_duration": 90,
+    "effective_date": "2021.05.21",
+    "passport_type": "Дипломат, албан паспорт"
+  },
+  {
+    "number": 66,
+    "country_name_mn": "Индонез",
+    "country_name_en": "Indonesia",
+    "country_code": "ID",
+    "visa_free_duration": 30,
+    "effective_date": "2021.12.01",
+    "passport_type": "Дипломат, албан паспорт",
+    "notes": "Албан ёсны урилгатай тохиолдолд"
+  },
+  {
+    "number": 67,
+    "country_name_mn": "Тайланд",
+    "country_name_en": "Thailand",
+    "country_code": "TH",
+    "visa_free_duration": 30,
+    "effective_date": "2024.07.15",
+    "passport_type": "Дипломат, албан паспорт"
+  }
+]
