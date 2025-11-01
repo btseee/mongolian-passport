@@ -25,7 +25,20 @@ export default function Header() {
               </span>
             </Link>
 
-            <div className="flex items-center lg:order-2">
+            <div className="flex items-center gap-2 lg:order-2">
+              <a
+                href="https://buymeacoffee.com/btseee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium bg-yellow-400 text-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-500/50 transition"
+                aria-label="Хандив өгөх"
+              >
+                <span className="sr-only">Хандив өгөх</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M3 8h14a3 3 0 110 6h-.18A7.002 7.002 0 0110 20a7.002 7.002 0 01-6.82-6H3a1 1 0 110-2h.18A7.002 7.002 0 0110 4c2.89 0 5.36 1.72 6.46 4H19a1 1 0 010 2h-1.05c.03.33.05.66.05 1s-.02.67-.05 1H19a1 1 0 110 2h-2.54A5.002 5.002 0 0110 18a5.002 5.002 0 01-4.46-3H3a1 1 0 110-2h2.54A5.002 5.002 0 0110 6c2.03 0 3.78 1.2 4.56 2.94H3a1 1 0 110-2z" />
+                </svg>
+                <span className="hidden sm:inline">Хандив өгөх</span>
+              </a>
               <button
                 id="theme-toggle"
                 onClick={toggleTheme}
