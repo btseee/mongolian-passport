@@ -1,29 +1,10 @@
-import Image from "next/image";
 import packageJson from "../../../package.json";
-import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="p-4 bg-white sm:p-6 dark:bg-gray-800">
-      <div className="mx-auto max-w-screen-xl">
-        <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-          <Link href="/" className="flex items-center">
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Mongolia_Passport_2023.svg"
-                className="mr-3 h-6 sm:h-9 rounded"
-                alt="Mongolian Passport Logo"
-                width={24}
-                height={64}
-              />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-700 dark:text-white">
-              {packageJson.displayName}
-              </span>
-            </Link>
-          </div>
-        </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
+    <footer className="fixed bottom-0 left-0 right-0 z-40 p-3 sm:p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+      <div className="w-full">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2025{" "}
             <a href={packageJson.author.url} className="hover:underline">
@@ -31,7 +12,7 @@ export default function Footer() {
             </a>
             . All Rights Reserved.
           </span>
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+          <div className="flex space-x-4 sm:justify-center">
 
             <a
               href={packageJson.repository.url}

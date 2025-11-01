@@ -1,195 +1,183 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  ZoomableGroup,
+} from "react-simple-maps";
 import useDarkMode from "@/hooks/darkMode";
-import passportData from "@/data/passport.json";
+import features from "@/data/features.json";
+import { feature } from "topojson-client";
+import type { FeatureCollection, Geometry, Feature } from "geojson";
+import { geoCentroid } from "d3-geo";
+
+export type MapCategory = "diplomat" | "normal" | "special" | "other";
+
+export interface MapSelection {
+  iso3: string; // e.g., USA
+}
 
 interface WorldMapProps {
-  onCountryClick: (countryCode: string) => void;
+  selected?: MapSelection | null;
+  onSelect: (iso3: string) => void;
+  colorByIso3: Record<string, MapCategory>;
 }
 
-interface WorldMapRef {
-  showTooltip: (countryName: string) => void;
-}
+const fillFor = (category: MapCategory, theme: "dark" | "light") => {
+  switch (category) {
+    case "diplomat":
+      return "#2563eb"; // blue-600
+    case "normal":
+      return "#16a34a"; // green-600
+    case "special":
+      return "#eab308"; // yellow-500
+    default:
+      return theme === "dark" ? "#334155" : "#E5E7EB"; // slate-700 / gray-200
+  }
+};
 
-interface GeographyData {
-  rsmKey: string;
-  properties: {
-    name: string;
-    longitude: number;
-    latitude: number;
-  };
-}
-
-const WorldMap = forwardRef<WorldMapRef, WorldMapProps>(
-  ({ onCountryClick }, ref) => {
-    const geoUrl =
-      "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-    const { theme } = useDarkMode();
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [tooltip, setTooltip] = useState<{
-      text: string;
-      x: number;
-      y: number;
-    } | null>(null);
-
-    const projectionRef = useRef<
-      (coordinates: [number, number]) => [number, number]
-    >(() => [0, 0]);
-    const geographiesRef = useRef<GeographyData[]>([]);
-    const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
-
-    useImperativeHandle(ref, () => ({
-      showTooltip: (countryName: string) => {
-        const country = passportData.find(
-          (x) => x.country_name_en === countryName
-        );
-        if (country) {
-          const geography = geographiesRef.current.find(
-            (geo) => geo.properties.name === countryName
-          );
-          if (geography) {
-            const [x, y] = projectionRef.current([
-              geography.properties.longitude,
-              geography.properties.latitude,
-            ]);
-
-            setTooltip({
-              text: getTooltip(geography.properties.name) ?? "",
-              x,
-              y,
-            });
-          }
+export default function WorldMap({
+  selected,
+  onSelect,
+  colorByIso3,
+}: WorldMapProps) {
+  const { theme } = useDarkMode();
+  const topo = features as unknown as any;
+  const fc = useMemo(
+    () => feature(topo, topo.objects.world) as FeatureCollection,
+    [topo]
+  );
+  const centroidByIso3 = useMemo(() => {
+    const map = new Map<string, [number, number]>();
+    (fc.features as Feature<Geometry, any>[]).forEach((f: any) => {
+      const id: string = f.id as string;
+      try {
+        const c = geoCentroid(f as any) as [number, number];
+        if (
+          Array.isArray(c) &&
+          Number.isFinite(c[0]) &&
+          Number.isFinite(c[1])
+        ) {
+          map.set(id, c);
         }
-      },
-    }));
+      } catch {}
+    });
+    return map;
+  }, [fc]);
 
-    useEffect(() => {
-      const handleResize = () => {
-        if (containerRef.current) {
-          containerRef.current.style.height = `${containerRef.current.offsetWidth}px`;
-        }
+  const [center, setCenter] = useState<[number, number]>([0, 15]);
+  const [zoom, setZoom] = useState(1);
+
+  const animateTo = React.useCallback(
+    (toCenter: [number, number], toZoom: number, duration = 400) => {
+      const fromCenter = center;
+      const fromZoom = zoom;
+      const start = performance.now();
+      const ease = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t); // easeInOutQuad
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        const k = ease(t);
+        const cx = fromCenter[0] + (toCenter[0] - fromCenter[0]) * k;
+        const cy = fromCenter[1] + (toCenter[1] - fromCenter[1]) * k;
+        const z = fromZoom + (toZoom - fromZoom) * k;
+        setCenter([cx, cy]);
+        setZoom(z);
+        if (t < 1) requestAnimationFrame(step);
       };
-      handleResize();
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
+      requestAnimationFrame(step);
+    },
+    [center, zoom]
+  );
 
-    const getFlagEmoji = (countryCode: string) =>
-      countryCode
-        .toUpperCase()
-        .replace(/./g, (char) =>
-          String.fromCodePoint(127397 + char.charCodeAt(0))
-        );
+  useEffect(() => {
+    if (selected?.iso3) {
+      const c = centroidByIso3.get(selected.iso3);
+      if (c) {
+        animateTo(c, 2.4);
+      }
+    } else {
+      animateTo([0, 15], 1);
+    }
+  }, [selected, centroidByIso3, animateTo]);
 
-    const getTooltip = (country: string) => {
-      const foundCountry = passportData.find(
-        (x) => x.country_name_en === country
-      );
-      if (!foundCountry) return;
-      const { country_name_mn, effective_date, notes, visa_free_duration } =
-        foundCountry;
-      const formattedNotes = notes ? `Тэмдэглэл: ${notes}` : "";
-      const formattedDate = effective_date
-        ? `Хүчинтэй огноо: ${effective_date}`
-        : "";
-      return `${getFlagEmoji(foundCountry.country_code)} ${country_name_mn}: ${
-        visa_free_duration || "N/A"
-      } хоног хүртэл\n${formattedNotes}\n${formattedDate}`.trim();
-    };
-
-    return (
-      <div
-        ref={containerRef}
-        className="relative w-full h-full flex justify-center items-center"
+  return (
+    <div className="relative w-full h-full">
+      <ComposableMap
+        projectionConfig={{ scale: 145 }}
+        className="w-full h-full"
       >
-        {tooltip && (
-          <div
-            className="absolute bg-gray-700 text-white text-sm px-2 py-1 rounded shadow-md pointer-events-none"
-            style={{
-              top: `${tooltip.y}px`,
-              left: `${tooltip.x}px`,
-              transform: "translate(-50%, -100%)",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {tooltip.text}
-          </div>
-        )}
-        <ComposableMap className="w-full h-full">
-          <Geographies geography={geoUrl}>
-            {({ geographies, projection }) => {
-              if (projection) {
-                projectionRef.current = (coordinates: [number, number]) => {
-                  const result = projection(coordinates);
-                  return result ?? [0, 0];
-                };
-              }
-
-              geographiesRef.current = geographies;
-
-              return geographies.map((geo) => {
-                const isInPassportData = passportData.find(
-                  (country) => country.country_name_en === geo.properties.name
-                );
+        <ZoomableGroup
+          center={center}
+          zoom={zoom}
+          minZoom={1}
+          maxZoom={5}
+          translateExtent={[
+            [-1000, -500],
+            [1000, 500],
+          ]}
+          onMoveEnd={({ coordinates, zoom }) => {
+            setCenter(coordinates as [number, number]);
+            setZoom(zoom);
+          }}
+        >
+          <Geographies geography={features as any}>
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                const iso3 = (geo as any).id as string;
+                const category = colorByIso3[iso3] ?? "other";
+                const clickable = category !== "other";
+                const isSelected = selected?.iso3 === iso3;
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    onMouseEnter={() => {
-                      if (projection) {
-                        const result = projection([
-                          geo.properties.longitude,
-                          geo.properties.latitude,
-                        ]);
-                        if (result) {
-                          const [x, y] = result;
-                          setTooltip({
-                            text: getTooltip(geo.properties.name) ?? "",
-                            x,
-                            y,
-                          });
-                          setSelectedCountry(geo.properties.name);
-                        }
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      setTooltip(null);
-                      setSelectedCountry(null);
-                    }}
-                    onClick={() => onCountryClick(geo.properties.name)}
+                    onClick={() => clickable && onSelect(iso3)}
                     style={{
                       default: {
-                        fill:
-                          geo.properties.name === selectedCountry
-                            ? "#F53"
-                            : isInPassportData
-                            ? "#4CAF50"
-                            : theme === "dark"
-                            ? "#2D3748"
-                            : "#CBD5E0",
-
-                        stroke: theme === "dark" ? "#A0AEC0" : "#4A5568",
+                        fill: isSelected
+                          ? "#f97316"
+                          : fillFor(
+                              category,
+                              theme === "dark" ? "dark" : "light"
+                            ), // orange when active
+                        stroke: theme === "dark" ? "#64748b" : "#94a3b8",
+                        strokeWidth: 0.6,
+                        outline: "none",
+                        cursor: clickable ? "pointer" : "default",
+                        transition: "fill 200ms ease, transform 200ms ease",
+                      },
+                      hover: {
+                        fill: isSelected
+                          ? "#fb923c"
+                          : clickable
+                          ? "#60a5fa"
+                          : fillFor(
+                              category,
+                              theme === "dark" ? "dark" : "light"
+                            ),
                         outline: "none",
                       },
-                      hover: { fill: "#F53", stroke: "#FFFFFF" },
+                      pressed: {
+                        fill: isSelected
+                          ? "#ea580c"
+                          : clickable
+                          ? "#3b82f6"
+                          : fillFor(
+                              category,
+                              theme === "dark" ? "dark" : "light"
+                            ),
+                        outline: "none",
+                      },
                     }}
                   />
                 );
-              });
-            }}
+              })
+            }
           </Geographies>
-        </ComposableMap>
-      </div>
-    );
-  }
-);
-
-WorldMap.displayName = "WorldMap";
-
-export default WorldMap;
+        </ZoomableGroup>
+      </ComposableMap>
+    </div>
+  );
+}

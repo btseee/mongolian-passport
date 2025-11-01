@@ -9,9 +9,9 @@ export default function Header() {
 
   return (
     <>
-      <header>
+      <header className="fixed top-0 left-0 right-0 z-50">
         <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <div className="flex flex-wrap justify-between items-center w-full">
             <Link href="/" className="flex items-center">
               <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Mongolia_Passport_2023.svg"
