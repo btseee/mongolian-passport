@@ -60,7 +60,7 @@ export default function Header({ language, onLanguageChange }: HeaderProps) {
           <div className="flex items-center gap-2">
             {/* Donate Button */}
             <a
-              href="https://ko-fi.com/mongolpassport"
+              href="https://buymeacoffee.com/btseee"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-pink-500 to-orange-400 text-white text-sm font-medium hover:opacity-90 transition-opacity"
