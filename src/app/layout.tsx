@@ -1,15 +1,14 @@
-export const metadata = {
-  title: "Mongolian Passport",
-  description: "Visa-free and special travel information for Mongolian passports",
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Mongolian Passport | Visa-Free Access Map",
+  description:
+    "Interactive world map showing visa-free travel destinations for Mongolian passport holders",
   icons: {
     icon: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mongolia_Passport_2023.svg",
-    shortcut: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mongolia_Passport_2023.svg",
-    apple: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mongolia_Passport_2023.svg",
   },
-} as const;
-
-import "./globals.css";
-import Layout from "@/components/layouts/Layout";
+};
 
 export default function RootLayout({
   children,
@@ -19,21 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script lang="typescript"
-          dangerouslySetInnerHTML={{
-            __html: `
-      if (localStorage.theme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    `,
-          }}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
         />
       </head>
-      <body>
-        <Layout>{children}</Layout>
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

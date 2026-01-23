@@ -1,46 +1,46 @@
-# Mongolian Passport Travel Map
+# Монгол Паспортын Аялалын Газрын Зураг
 
-Interactive map showing countries Mongolian citizens can visit by passport type:
+Монгол иргэд паспортын төрлөөр аль улс руу визгүй зорчих боломжтойг харуулсан интерактив газрын зураг:
 
-- Blue: Diplomat/Official passport
-- Green: Ordinary passport (visa-free)
-- Yellow: Special arrangements (e.g., visa on arrival, multi-entry visa facilitation)
-- Grey: Not covered
+- 🔵 Цэнхэр: Дипломат/Албан паспорт
+- 🟢 Ногоон: Энгийн паспорт (визгүй)
+- 🟡 Шар: Тусгай нөхцөл (хилийн боомт дээр виз, олон удаагийн виз г.м.)
+- ⚪ Саарал: Хамрагдаагүй
+- 🔴 Улаан: Монгол Улс (Эх орон)
 
-Click a colored country (blue/green/yellow) to smoothly center and open details in a left sidebar. Use the search box (top-left) for quick autocomplete.
+Өнгөт улс (цэнхэр/ногоон/шар) дээр дарж дэлгэрэнгүй мэдээллийг хажуугийн самбараас харах боломжтой. Зүүн дээд буланд байрлах хайлтын талбар ашиглан хурдан хайлт хийнэ үү.
 
-## Tech
+## Технологи
 
-- Next.js App Router, React 18
-- Tailwind CSS
-- react-simple-maps + TopoJSON dataset (local)
+- Next.js App Router, React 19
+- Tailwind CSS 4
+- d3-geo + TopoJSON (world-atlas)
 
-## Data sources
+## Өгөгдлийн эх сурвалж
 
-JSON files in `src/data/`:
+`src/data/` дотор JSON файлууд:
 
-- `passport.json`: visa-free for ordinary passports (green)
-- `diplomat.json`: visa-free for diplomatic/official passports (blue)
-- `special.json`: special arrangements (yellow)
-- `features.json`: world TopoJSON features
+- `passport.json`: энгийн паспортоор визгүй (ногоон)
+- `diplomat.json`: дипломат/албан паспортоор визгүй (цэнхэр)
+- `special.json`: тусгай нөхцөл (шар)
 
-## Run locally
+## Локал дээр ажиллуулах
 
 ```bash
 npm install
 npm run dev
-# open http://localhost:3000
+# http://localhost:3000 нээнэ үү
 ```
 
-## Build
+## Build хийх
 
 ```bash
 npm run build
 npm start
 ```
 
-## Notes
+## Тэмдэглэл
 
-- Countries that appear in multiple lists are colored by priority: Diplomat > Ordinary > Special.
-- Only colored countries are clickable and searchable.
-- Map pan/zoom transitions and sidebar open/close include smooth animations.
+- Олон жагсаалтад орсон улсууд нь эрэмбээр өнгөлөгддөг: Дипломат > Энгийн > Тусгай.
+- Зөвхөн өнгөт улсууд дарагдах болон хайгдах боломжтой.
+- Газрын зурагт хөдөлгөөн болон хажуугийн самбар нээх/хаах үед жигд анимаци ашигладаг.
